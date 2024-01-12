@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import PageLayout from "../components/PageLayout";
 import { useEffect, useState } from "react";
+import NewsAPI from "newsapi";
 
 export default function Home({ articles }) {
   return (
@@ -27,12 +28,10 @@ export default function Home({ articles }) {
 }
 
 export async function getServerSideProps() {
-  const { response } = await fetch(
+  const response = await fetch(
     "https://newsapi.org/v2/everything?q=tesla&from=2023-12-12&sortBy=publishedAt&apiKey=11e4408aecc046a6a3f6a8c1f273ed5b"
   );
-  console.log("-----------------------");
-  console.log(response);
-  // const { articles } = await response.json();
-  // console.log(articles);
-  return { props: { articles: [] } };
+  const { articles } = await response.json();
+
+  return { props: { articles } };
 }
