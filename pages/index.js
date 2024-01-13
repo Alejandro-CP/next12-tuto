@@ -28,8 +28,9 @@ export default function Home({ articles }) {
 }
 
 export async function getServerSideProps() {
+  const API_KEY = "";
   const response = await fetch(
-    "https://newsapi.org/v2/everything?q=tesla&from=2023-12-30&sortBy=publishedAt&apiKey=11e4408aecc046a6a3f6a8c1f273ed5b"
+    `https://newsapi.org/v2/everything?q=tesla&from=2023-12-30&sortBy=publishedAt&apiKey=${API_KEY}`
   );
 
   // console.log("................");
