@@ -29,8 +29,11 @@ export default function Home({ articles }) {
 
 export async function getServerSideProps() {
   const response = await fetch(
-    "https://newsapi.org/v2/everything?q=tesla&from=2023-12-12&sortBy=publishedAt&apiKey=11e4408aecc046a6a3f6a8c1f273ed5b"
+    "https://newsapi.org/v2/everything?q=tesla&from=2023-12-30&sortBy=publishedAt&apiKey=11e4408aecc046a6a3f6a8c1f273ed5b"
   );
+
+  // console.log("................");
+  // console.log(await response.json());
   const { articles } = await response.json();
 
   return { props: { articles } };
